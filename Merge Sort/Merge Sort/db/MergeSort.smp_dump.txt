@@ -1,0 +1,41 @@
+
+State Machine - |MergeSortDemo|DisplayControl:display_control|s_currentstate
+Name s_currentstate.s_showlvl3 s_currentstate.s_showlvl2 s_currentstate.s_showlvl1 s_currentstate.s_hide 
+s_currentstate.s_hide 0 0 0 0 
+s_currentstate.s_showlvl1 0 0 1 1 
+s_currentstate.s_showlvl2 0 1 0 1 
+s_currentstate.s_showlvl3 1 0 0 1 
+
+State Machine - |MergeSortDemo|ControlUnit:control_unit|s_currentstate
+Name s_currentstate.sort s_currentstate.dec s_currentstate.inc s_currentstate.ins s_currentstate.user s_currentstate.rand s_currentstate.ini 
+s_currentstate.ini 0 0 0 0 0 0 0 
+s_currentstate.rand 0 0 0 0 0 1 1 
+s_currentstate.user 0 0 0 0 1 0 1 
+s_currentstate.ins 0 0 0 1 0 0 1 
+s_currentstate.inc 0 0 1 0 0 0 1 
+s_currentstate.dec 0 1 0 0 0 0 1 
+s_currentstate.sort 1 0 0 0 0 0 1 
+
+State Machine - |MergeSortDemo|debouncer:debouncer_3|state
+Name state.INSIDE_DELAY state.INSIDE_WINDOW state.IDLE 
+state.IDLE 0 0 0 
+state.INSIDE_WINDOW 0 1 1 
+state.INSIDE_DELAY 1 0 1 
+
+State Machine - |MergeSortDemo|debouncer:debouncer_2|state
+Name state.INSIDE_DELAY state.INSIDE_WINDOW state.IDLE 
+state.IDLE 0 0 0 
+state.INSIDE_WINDOW 0 1 1 
+state.INSIDE_DELAY 1 0 1 
+
+State Machine - |MergeSortDemo|debouncer:debouncer_1|state
+Name state.INSIDE_DELAY state.INSIDE_WINDOW state.IDLE 
+state.IDLE 0 0 0 
+state.INSIDE_WINDOW 0 1 1 
+state.INSIDE_DELAY 1 0 1 
+
+State Machine - |MergeSortDemo|debouncer:debouncer_0|state
+Name state.INSIDE_DELAY state.INSIDE_WINDOW state.IDLE 
+state.IDLE 0 0 0 
+state.INSIDE_WINDOW 0 1 1 
+state.INSIDE_DELAY 1 0 1 

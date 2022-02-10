@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity DisplayControl is
+	port(clk: in std_logic;
+		  reset: in std_logic;
+		  show: in std_logic;
+		  finish: in std_logic;
+		  sel: out std_logic);
+end DisplayControl;
+
+
+architecture Behavioral of DisplayControl is
+	type fstate is(s_hide, s_show);
+	signal s_currentstate, s_nextstate: fstate;
+
+begin
+
+	sync_proc : process(clk)
+	begin
+		if (rising_edge(clk)) then
+			if (reset = '1') then
+				s_currentState <= s_hide;
+			else
+				s_currentState <= s_nextState;
+			end if;
+		end if;
+	end process;
+	
+	comb_proc : process(s_currentstate, show, finish)
+	begin
+		case(s_currentstate) is
+		when s_hide=>
+			sel<='0';
+			if ((show='1') or (finish='1')) then
+				s_nextstate<= s_show;
+			else
+				s_nextstate<= s_hide;
+		
+		when s_show=>
+			sel<='1';
+		
+		end case;
+	end process;
+end Behavioral;	

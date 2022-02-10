@@ -1,0 +1,59 @@
+# Reading D:/intelFPGA_lite/17.1/modelsim_ase/tcl/vsim/pref.tcl
+# do MergeSort_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying D:/intelFPGA_lite/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {D:/Universidade/LSDig/Projects/Merge Sort/Mux4_1_8.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:59:52 on May 31,2018
+# vcom -reportprogress 300 -93 -work work D:/Universidade/LSDig/Projects/Merge Sort/Mux4_1_8.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Mux4_1_8
+# -- Compiling architecture Behavioral of Mux4_1_8
+# End time: 19:59:52 on May 31,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Universidade/LSDig/Projects/Merge Sort/Bin7SegDecoder.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:59:52 on May 31,2018
+# vcom -reportprogress 300 -93 -work work D:/Universidade/LSDig/Projects/Merge Sort/Bin7SegDecoder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Bin7SegDecoder
+# -- Compiling architecture Behavioral of Bin7SegDecoder
+# End time: 19:59:52 on May 31,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Universidade/LSDig/Projects/Merge Sort/Mux2_1.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:59:52 on May 31,2018
+# vcom -reportprogress 300 -93 -work work D:/Universidade/LSDig/Projects/Merge Sort/Mux2_1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity Mux2_1
+# -- Compiling architecture Behavioral of Mux2_1
+# End time: 19:59:52 on May 31,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vcom -93 -work work {D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 19:59:52 on May 31,2018
+# vcom -reportprogress 300 -93 -work work D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity pseudo_random_generator
+# -- Compiling architecture heavy of pseudo_random_generator
+# -- Compiling architecture light of pseudo_random_generator
+# -- Loading entity pseudo_random_generator
+# End time: 19:59:52 on May 31,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

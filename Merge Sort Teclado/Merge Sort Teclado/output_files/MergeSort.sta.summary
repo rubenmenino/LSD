@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -6.240
+TNS   : -1888.910
+
+Type  : Slow 1200mV 85C Model Setup 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : -3.465
+TNS   : -3.465
+
+Type  : Slow 1200mV 85C Model Setup 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : -3.304
+TNS   : -3.304
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.385
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 2.890
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 3.060
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -1018.150
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 0.407
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 0.420
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -5.643
+TNS   : -1659.813
+
+Type  : Slow 1200mV 0C Model Setup 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : -3.077
+TNS   : -3.077
+
+Type  : Slow 1200mV 0C Model Setup 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : -2.913
+TNS   : -2.913
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.338
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 2.633
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 2.786
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -1018.150
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 0.427
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 0.429
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -2.576
+TNS   : -600.508
+
+Type  : Fast 1200mV 0C Model Setup 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : -1.338
+TNS   : -1.338
+
+Type  : Fast 1200mV 0C Model Setup 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : -1.248
+TNS   : -1.248
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.128
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 1.529
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 1.612
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -841.690
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.ins'
+Slack : 0.438
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ControlUnit:control_unit|s_currentstate.sort'
+Slack : 0.458
+TNS   : 0.000
+
+------------------------------------------------------------

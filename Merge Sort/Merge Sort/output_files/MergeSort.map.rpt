@@ -1,0 +1,914 @@
+Analysis & Synthesis report for MergeSort
+Fri Jun 01 15:22:16 2018
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |MergeSortDemo|DisplayControl:display_control|s_currentstate
+  9. State Machine - |MergeSortDemo|ControlUnit:control_unit|s_currentstate
+ 10. State Machine - |MergeSortDemo|debouncer:debouncer_3|state
+ 11. State Machine - |MergeSortDemo|debouncer:debouncer_2|state
+ 12. State Machine - |MergeSortDemo|debouncer:debouncer_1|state
+ 13. State Machine - |MergeSortDemo|debouncer:debouncer_0|state
+ 14. Registers Protected by Synthesis
+ 15. User-Specified and Inferred Latches
+ 16. Registers Removed During Synthesis
+ 17. General Register Statistics
+ 18. Inverted Register Statistics
+ 19. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 20. Source assignments for debouncer:debouncer_0
+ 21. Source assignments for debouncer:debouncer_1
+ 22. Source assignments for debouncer:debouncer_2
+ 23. Source assignments for debouncer:debouncer_3
+ 24. Parameter Settings for User Entity Instance: debouncer:debouncer_0
+ 25. Parameter Settings for User Entity Instance: debouncer:debouncer_1
+ 26. Parameter Settings for User Entity Instance: debouncer:debouncer_2
+ 27. Parameter Settings for User Entity Instance: debouncer:debouncer_3
+ 28. Parameter Settings for User Entity Instance: pseudo_random_generator:random_generator
+ 29. Port Connectivity Checks: "Merge_lvl2:merge_lvl2_1"
+ 30. Port Connectivity Checks: "Merge_lvl1:merge_lvl1_3"
+ 31. Port Connectivity Checks: "Merge_lvl1:merge_lvl1_2"
+ 32. Port Connectivity Checks: "Merge_lvl1:merge_lvl1_1"
+ 33. Port Connectivity Checks: "pseudo_random_generator:random_generator"
+ 34. Port Connectivity Checks: "InsertedCount:inserted_count"
+ 35. Port Connectivity Checks: "debouncer:debouncer_3"
+ 36. Port Connectivity Checks: "debouncer:debouncer_2"
+ 37. Port Connectivity Checks: "debouncer:debouncer_1"
+ 38. Port Connectivity Checks: "debouncer:debouncer_0"
+ 39. Post-Synthesis Netlist Statistics for Top Partition
+ 40. Elapsed Time Per Partition
+ 41. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Jun 01 15:22:16 2018       ;
+; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                      ; MergeSort                                   ;
+; Top-level Entity Name              ; MergeSortDemo                               ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 1,404                                       ;
+;     Total combinational functions  ; 1,396                                       ;
+;     Dedicated logic registers      ; 662                                         ;
+; Total registers                    ; 662                                         ;
+; Total pins                         ; 66                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; MergeSortDemo      ; MergeSort          ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                              ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                                        ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.2%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                 ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+; debouncer.vhd                    ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd               ;         ;
+; Mux4_1_8.vhd                     ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Mux4_1_8.vhd                ;         ;
+; Bin7SegDecoder.vhd               ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Bin7SegDecoder.vhd          ;         ;
+; Mux2_1.vhd                       ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Mux2_1.vhd                  ;         ;
+; pseudo_random_generator.vhd      ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd ;         ;
+; ControlUnit.vhd                  ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd             ;         ;
+; MergeSortDemo.vhd                ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd           ;         ;
+; InsertedCount.vhd                ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/InsertedCount.vhd           ;         ;
+; UserCount.vhd                    ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/UserCount.vhd               ;         ;
+; ShiftRegister.vhd                ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/ShiftRegister.vhd           ;         ;
+; Merge_lvl1.vhd                   ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl1.vhd              ;         ;
+; Merge_lvl2.vhd                   ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl2.vhd              ;         ;
+; Merge_lvl3.vhd                   ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl3.vhd              ;         ;
+; DisplayControl.vhd               ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/DisplayControl.vhd          ;         ;
+; Register1bit.vhd                 ; yes             ; User VHDL File  ; D:/Universidade/LSDig/Projects/Merge Sort/Register1bit.vhd            ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 1,404          ;
+;                                             ;                ;
+; Total combinational functions               ; 1396           ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 913            ;
+;     -- 3 input functions                    ; 256            ;
+;     -- <=2 input functions                  ; 227            ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 1273           ;
+;     -- arithmetic mode                      ; 123            ;
+;                                             ;                ;
+; Total registers                             ; 662            ;
+;     -- Dedicated logic registers            ; 662            ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 66             ;
+;                                             ;                ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 662            ;
+; Total fan-out                               ; 6607           ;
+; Average fan-out                             ; 3.02           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++-----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node                    ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                     ; Entity Name             ; Library Name ;
++-----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------+-------------------------+--------------+
+; |MergeSortDemo                                ; 1396 (0)            ; 662 (0)                   ; 0           ; 0            ; 0       ; 0         ; 66   ; 0            ; |MergeSortDemo                                          ; MergeSortDemo           ; work         ;
+;    |Bin7SegDecoder:display0|                  ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display0                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display1|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display1                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display2|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display2                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display3|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display3                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display4|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display4                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display5|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display5                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display6|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display6                  ; Bin7SegDecoder          ; work         ;
+;    |Bin7SegDecoder:display7|                  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Bin7SegDecoder:display7                  ; Bin7SegDecoder          ; work         ;
+;    |ControlUnit:control_unit|                 ; 13 (13)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|ControlUnit:control_unit                 ; ControlUnit             ; work         ;
+;    |DisplayControl:display_control|           ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|DisplayControl:display_control           ; DisplayControl          ; work         ;
+;    |InsertedCount:inserted_count|             ; 4 (4)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|InsertedCount:inserted_count             ; InsertedCount           ; work         ;
+;    |Merge_lvl1:merge_lvl1_0|                  ; 13 (13)             ; 9 (9)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl1:merge_lvl1_0                  ; Merge_lvl1              ; work         ;
+;    |Merge_lvl1:merge_lvl1_1|                  ; 12 (12)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl1:merge_lvl1_1                  ; Merge_lvl1              ; work         ;
+;    |Merge_lvl1:merge_lvl1_2|                  ; 12 (12)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl1:merge_lvl1_2                  ; Merge_lvl1              ; work         ;
+;    |Merge_lvl1:merge_lvl1_3|                  ; 13 (13)             ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl1:merge_lvl1_3                  ; Merge_lvl1              ; work         ;
+;    |Merge_lvl2:merge_lvl2_0|                  ; 80 (80)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl2:merge_lvl2_0                  ; Merge_lvl2              ; work         ;
+;    |Merge_lvl2:merge_lvl2_1|                  ; 81 (81)             ; 17 (17)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl2:merge_lvl2_1                  ; Merge_lvl2              ; work         ;
+;    |Merge_lvl3:merge_lvl3|                    ; 297 (297)           ; 43 (43)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Merge_lvl3:merge_lvl3                    ; Merge_lvl3              ; work         ;
+;    |Mux2_1:mux_1|                             ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Mux2_1:mux_1                             ; Mux2_1                  ; work         ;
+;    |Mux4_1_8:mux_4_1_8|                       ; 60 (60)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Mux4_1_8:mux_4_1_8                       ; Mux4_1_8                ; work         ;
+;    |Register1bit:register_1|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_1                  ; Register1bit            ; work         ;
+;    |Register1bit:register_2|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_2                  ; Register1bit            ; work         ;
+;    |Register1bit:register_3|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_3                  ; Register1bit            ; work         ;
+;    |Register1bit:register_4|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_4                  ; Register1bit            ; work         ;
+;    |Register1bit:register_5|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_5                  ; Register1bit            ; work         ;
+;    |Register1bit:register_6|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_6                  ; Register1bit            ; work         ;
+;    |Register1bit:register_7|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_7                  ; Register1bit            ; work         ;
+;    |Register1bit:register_8|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|Register1bit:register_8                  ; Register1bit            ; work         ;
+;    |ShiftRegister:shift_register|             ; 34 (34)             ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|ShiftRegister:shift_register             ; ShiftRegister           ; work         ;
+;    |UserCount:user_count|                     ; 9 (9)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|UserCount:user_count                     ; UserCount               ; work         ;
+;    |debouncer:debouncer_0|                    ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|debouncer:debouncer_0                    ; debouncer               ; work         ;
+;    |debouncer:debouncer_1|                    ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|debouncer:debouncer_1                    ; debouncer               ; work         ;
+;    |debouncer:debouncer_2|                    ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|debouncer:debouncer_2                    ; debouncer               ; work         ;
+;    |debouncer:debouncer_3|                    ; 69 (69)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|debouncer:debouncer_3                    ; debouncer               ; work         ;
+;    |pseudo_random_generator:random_generator| ; 414 (414)           ; 389 (389)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MergeSortDemo|pseudo_random_generator:random_generator ; pseudo_random_generator ; work         ;
++-----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|DisplayControl:display_control|s_currentstate                                                          ;
++---------------------------+---------------------------+---------------------------+---------------------------+-----------------------+
+; Name                      ; s_currentstate.s_showlvl3 ; s_currentstate.s_showlvl2 ; s_currentstate.s_showlvl1 ; s_currentstate.s_hide ;
++---------------------------+---------------------------+---------------------------+---------------------------+-----------------------+
+; s_currentstate.s_hide     ; 0                         ; 0                         ; 0                         ; 0                     ;
+; s_currentstate.s_showlvl1 ; 0                         ; 0                         ; 1                         ; 1                     ;
+; s_currentstate.s_showlvl2 ; 0                         ; 1                         ; 0                         ; 1                     ;
+; s_currentstate.s_showlvl3 ; 1                         ; 0                         ; 0                         ; 1                     ;
++---------------------------+---------------------------+---------------------------+---------------------------+-----------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|ControlUnit:control_unit|s_currentstate                                                                                                    ;
++---------------------+---------------------+--------------------+--------------------+--------------------+---------------------+---------------------+--------------------+
+; Name                ; s_currentstate.sort ; s_currentstate.dec ; s_currentstate.inc ; s_currentstate.ins ; s_currentstate.user ; s_currentstate.rand ; s_currentstate.ini ;
++---------------------+---------------------+--------------------+--------------------+--------------------+---------------------+---------------------+--------------------+
+; s_currentstate.ini  ; 0                   ; 0                  ; 0                  ; 0                  ; 0                   ; 0                   ; 0                  ;
+; s_currentstate.rand ; 0                   ; 0                  ; 0                  ; 0                  ; 0                   ; 1                   ; 1                  ;
+; s_currentstate.user ; 0                   ; 0                  ; 0                  ; 0                  ; 1                   ; 0                   ; 1                  ;
+; s_currentstate.ins  ; 0                   ; 0                  ; 0                  ; 1                  ; 0                   ; 0                   ; 1                  ;
+; s_currentstate.inc  ; 0                   ; 0                  ; 1                  ; 0                  ; 0                   ; 0                   ; 1                  ;
+; s_currentstate.dec  ; 0                   ; 1                  ; 0                  ; 0                  ; 0                   ; 0                   ; 1                  ;
+; s_currentstate.sort ; 1                   ; 0                  ; 0                  ; 0                  ; 0                   ; 0                   ; 1                  ;
++---------------------+---------------------+--------------------+--------------------+--------------------+---------------------+---------------------+--------------------+
+
+
+Encoding Type: Safe One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|debouncer:debouncer_3|state                  ;
++---------------------+--------------------+---------------------+------------+
+; Name                ; state.INSIDE_DELAY ; state.INSIDE_WINDOW ; state.IDLE ;
++---------------------+--------------------+---------------------+------------+
+; state.IDLE          ; 0                  ; 0                   ; 0          ;
+; state.INSIDE_WINDOW ; 0                  ; 1                   ; 1          ;
+; state.INSIDE_DELAY  ; 1                  ; 0                   ; 1          ;
++---------------------+--------------------+---------------------+------------+
+
+
+Encoding Type: Safe One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|debouncer:debouncer_2|state                  ;
++---------------------+--------------------+---------------------+------------+
+; Name                ; state.INSIDE_DELAY ; state.INSIDE_WINDOW ; state.IDLE ;
++---------------------+--------------------+---------------------+------------+
+; state.IDLE          ; 0                  ; 0                   ; 0          ;
+; state.INSIDE_WINDOW ; 0                  ; 1                   ; 1          ;
+; state.INSIDE_DELAY  ; 1                  ; 0                   ; 1          ;
++---------------------+--------------------+---------------------+------------+
+
+
+Encoding Type: Safe One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|debouncer:debouncer_1|state                  ;
++---------------------+--------------------+---------------------+------------+
+; Name                ; state.INSIDE_DELAY ; state.INSIDE_WINDOW ; state.IDLE ;
++---------------------+--------------------+---------------------+------------+
+; state.IDLE          ; 0                  ; 0                   ; 0          ;
+; state.INSIDE_WINDOW ; 0                  ; 1                   ; 1          ;
+; state.INSIDE_DELAY  ; 1                  ; 0                   ; 1          ;
++---------------------+--------------------+---------------------+------------+
+
+
+Encoding Type: Safe One-Hot
++-----------------------------------------------------------------------------+
+; State Machine - |MergeSortDemo|debouncer:debouncer_0|state                  ;
++---------------------+--------------------+---------------------+------------+
+; Name                ; state.INSIDE_DELAY ; state.INSIDE_WINDOW ; state.IDLE ;
++---------------------+--------------------+---------------------+------------+
+; state.IDLE          ; 0                  ; 0                   ; 0          ;
+; state.INSIDE_WINDOW ; 0                  ; 1                   ; 1          ;
+; state.INSIDE_DELAY  ; 1                  ; 0                   ; 1          ;
++---------------------+--------------------+---------------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Protected by Synthesis                                                                                                                          ;
++-------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; Register Name                             ; Protected by Synthesis Attribute or Preserve Register Assignment ; Not to be Touched by Netlist Optimizations ;
++-------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+; debouncer:debouncer_0|state.INSIDE_WINDOW ; no                                                               ; yes                                        ;
+; debouncer:debouncer_2|state.INSIDE_WINDOW ; no                                                               ; yes                                        ;
+; debouncer:debouncer_3|state.INSIDE_WINDOW ; no                                                               ; yes                                        ;
+; debouncer:debouncer_0|state.IDLE          ; no                                                               ; yes                                        ;
+; debouncer:debouncer_0|state.INSIDE_DELAY  ; no                                                               ; yes                                        ;
+; debouncer:debouncer_1|state.INSIDE_WINDOW ; no                                                               ; yes                                        ;
+; debouncer:debouncer_2|state.IDLE          ; no                                                               ; yes                                        ;
+; debouncer:debouncer_2|state.INSIDE_DELAY  ; no                                                               ; yes                                        ;
+; debouncer:debouncer_3|state.IDLE          ; no                                                               ; yes                                        ;
+; debouncer:debouncer_3|state.INSIDE_DELAY  ; no                                                               ; yes                                        ;
+; debouncer:debouncer_1|state.IDLE          ; no                                                               ; yes                                        ;
+; debouncer:debouncer_1|state.INSIDE_DELAY  ; no                                                               ; yes                                        ;
+; Total number of protected registers is 12 ;                                                                  ;                                            ;
++-------------------------------------------+------------------------------------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                        ;
++----------------------------------------------------+----------------------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal                          ; Free of Timing Hazards ;
++----------------------------------------------------+----------------------------------------------+------------------------+
+; ControlUnit:control_unit|out_user                  ; ControlUnit:control_unit|s_currentstate.ins  ; yes                    ;
+; ControlUnit:control_unit|out_inc_dec               ; ControlUnit:control_unit|s_currentstate.sort ; yes                    ;
+; Number of user-specified and inferred latches = 2  ;                                              ;                        ;
++----------------------------------------------------+----------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------+
+; Registers Removed During Synthesis                               ;
++---------------------------------------------+--------------------+
+; Register name                               ; Reason for Removal ;
++---------------------------------------------+--------------------+
+; ControlUnit:control_unit|s_currentstate.ini ; Lost fanout        ;
+; Total Number of Removed Registers = 1       ;                    ;
++---------------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 662   ;
+; Number of registers using Synchronous Clear  ; 115   ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 170   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------+
+; Inverted Register Statistics                                    ;
++-------------------------------------------------------+---------+
+; Inverted Register                                     ; Fan out ;
++-------------------------------------------------------+---------+
+; pseudo_random_generator:random_generator|state_10[3]  ; 1       ;
+; pseudo_random_generator:random_generator|state_10[0]  ; 1       ;
+; pseudo_random_generator:random_generator|state_10[1]  ; 1       ;
+; pseudo_random_generator:random_generator|state_09[17] ; 4       ;
+; pseudo_random_generator:random_generator|state_09[24] ; 4       ;
+; debouncer:debouncer_0|level                           ; 5       ;
+; debouncer:debouncer_0|sampled_dirty                   ; 5       ;
+; pseudo_random_generator:random_generator|state_08[18] ; 1       ;
+; pseudo_random_generator:random_generator|state_08[21] ; 1       ;
+; pseudo_random_generator:random_generator|state_08[11] ; 1       ;
+; debouncer:debouncer_3|level                           ; 5       ;
+; debouncer:debouncer_3|sampled_dirty                   ; 5       ;
+; debouncer:debouncer_2|level                           ; 4       ;
+; debouncer:debouncer_2|sampled_dirty                   ; 4       ;
+; pseudo_random_generator:random_generator|state_07[16] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[8]  ; 1       ;
+; pseudo_random_generator:random_generator|state_07[24] ; 2       ;
+; pseudo_random_generator:random_generator|state_07[7]  ; 2       ;
+; pseudo_random_generator:random_generator|state_07[30] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[40] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[37] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[17] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[0]  ; 2       ;
+; pseudo_random_generator:random_generator|state_07[11] ; 1       ;
+; pseudo_random_generator:random_generator|state_07[5]  ; 1       ;
+; pseudo_random_generator:random_generator|state_07[33] ; 1       ;
+; debouncer:debouncer_1|level                           ; 5       ;
+; debouncer:debouncer_1|sampled_dirty                   ; 5       ;
+; pseudo_random_generator:random_generator|state_06[32] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[18] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[3]  ; 3       ;
+; pseudo_random_generator:random_generator|state_06[1]  ; 3       ;
+; pseudo_random_generator:random_generator|state_06[8]  ; 3       ;
+; pseudo_random_generator:random_generator|state_06[5]  ; 2       ;
+; pseudo_random_generator:random_generator|state_06[17] ; 2       ;
+; pseudo_random_generator:random_generator|state_06[15] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[24] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[40] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[22] ; 2       ;
+; pseudo_random_generator:random_generator|state_06[26] ; 2       ;
+; pseudo_random_generator:random_generator|state_06[30] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[37] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[21] ; 3       ;
+; pseudo_random_generator:random_generator|state_06[0]  ; 4       ;
+; pseudo_random_generator:random_generator|state_06[16] ; 4       ;
+; pseudo_random_generator:random_generator|state_06[7]  ; 4       ;
+; pseudo_random_generator:random_generator|state_06[33] ; 1       ;
+; pseudo_random_generator:random_generator|state_06[11] ; 2       ;
+; pseudo_random_generator:random_generator|state_05[24] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[21] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[37] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[22] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[0]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[17] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[3]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[26] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[18] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[1]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[8]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[7]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[30] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[11] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[33] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[16] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[5]  ; 4       ;
+; pseudo_random_generator:random_generator|state_05[40] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[32] ; 4       ;
+; pseudo_random_generator:random_generator|state_05[15] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[15] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[21] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[16] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[24] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[18] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[26] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[1]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[22] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[3]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[8]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[0]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[7]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[5]  ; 4       ;
+; pseudo_random_generator:random_generator|state_04[33] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[30] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[37] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[17] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[40] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[32] ; 4       ;
+; pseudo_random_generator:random_generator|state_04[11] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[7]  ; 4       ;
+; pseudo_random_generator:random_generator|state_03[3]  ; 4       ;
+; pseudo_random_generator:random_generator|state_03[21] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[32] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[40] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[30] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[17] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[26] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[0]  ; 4       ;
+; pseudo_random_generator:random_generator|state_03[16] ; 4       ;
+; pseudo_random_generator:random_generator|state_03[1]  ; 4       ;
+; pseudo_random_generator:random_generator|state_03[5]  ; 4       ;
+; Total number of inverted registers = 168*             ;         ;
++-------------------------------------------------------+---------+
+* Table truncated at 100 items. To change the number of inverted registers reported, set the "Number of Inverted Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
+; 3:1                ; 31 bits   ; 62 LEs        ; 31 LEs               ; 31 LEs                 ; Yes        ; |MergeSortDemo|ShiftRegister:shift_register|s_dataOut[19]    ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl1:merge_lvl1_3|s_sortedn1[3]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl1:merge_lvl1_2|s_sortedn2[2]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl1:merge_lvl1_1|s_sortedn2[2]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl1:merge_lvl1_0|s_sortedn1[3]         ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |MergeSortDemo|UserCount:user_count|s_count[3]               ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_1|s_sortedn1[3]         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_0|s_sortedn1[1]         ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn1[0]           ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |MergeSortDemo|ShiftRegister:shift_register|s_dataOut[3]     ;
+; 7:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |MergeSortDemo|debouncer:debouncer_3|timer_counter[13]       ;
+; 7:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |MergeSortDemo|debouncer:debouncer_2|timer_counter[7]        ;
+; 7:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |MergeSortDemo|debouncer:debouncer_1|timer_counter[10]       ;
+; 7:1                ; 20 bits   ; 80 LEs        ; 40 LEs               ; 40 LEs                 ; Yes        ; |MergeSortDemo|debouncer:debouncer_0|timer_counter[3]        ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn2[2]           ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_1|s_sortedn2[3]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_1|s_sortedn3[2]         ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_0|s_sortedn2[0]         ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl2:merge_lvl2_0|s_sortedn4[3]         ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 16 LEs               ; 20 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn3[0]           ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 8 LEs                ; 28 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn8[2]           ;
+; 14:1               ; 4 bits    ; 36 LEs        ; 12 LEs               ; 24 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn7[3]           ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn6[2]           ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn4[1]           ;
+; 18:1               ; 4 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |MergeSortDemo|Merge_lvl3:merge_lvl3|s_sortedn5[0]           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |MergeSortDemo|DisplayControl:display_control|s_currentstate ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |MergeSortDemo|Mux4_1_8:mux_4_1_8|dataOut5[3]                ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display7|decOut_n[3]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display6|decOut_n[3]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display5|decOut_n[6]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display4|decOut_n[3]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display3|decOut_n[3]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display2|decOut_n[6]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display1|decOut_n[6]           ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |MergeSortDemo|Bin7SegDecoder:display0|decOut_n[6]           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |MergeSortDemo|Mux2_1:mux_1|dataOut[0]                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |MergeSortDemo|ControlUnit:control_unit|s_currentstate       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |MergeSortDemo|debouncer:debouncer_3|state                   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |MergeSortDemo|debouncer:debouncer_2|state                   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |MergeSortDemo|debouncer:debouncer_1|state                   ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 8 LEs                ; 2 LEs                  ; No         ; |MergeSortDemo|debouncer:debouncer_0|state                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
+
+
++----------------------------------------------+
+; Source assignments for debouncer:debouncer_0 ;
++--------------------+-------+------+----------+
+; Assignment         ; Value ; From ; To       ;
++--------------------+-------+------+----------+
+; SAFE_STATE_MACHINE ; on    ; -    ; state    ;
++--------------------+-------+------+----------+
+
+
++----------------------------------------------+
+; Source assignments for debouncer:debouncer_1 ;
++--------------------+-------+------+----------+
+; Assignment         ; Value ; From ; To       ;
++--------------------+-------+------+----------+
+; SAFE_STATE_MACHINE ; on    ; -    ; state    ;
++--------------------+-------+------+----------+
+
+
++----------------------------------------------+
+; Source assignments for debouncer:debouncer_2 ;
++--------------------+-------+------+----------+
+; Assignment         ; Value ; From ; To       ;
++--------------------+-------+------+----------+
+; SAFE_STATE_MACHINE ; on    ; -    ; state    ;
++--------------------+-------+------+----------+
+
+
++----------------------------------------------+
+; Source assignments for debouncer:debouncer_3 ;
++--------------------+-------+------+----------+
+; Assignment         ; Value ; From ; To       ;
++--------------------+-------+------+----------+
+; SAFE_STATE_MACHINE ; on    ; -    ; state    ;
++--------------------+-------+------+----------+
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_0 ;
++-----------------+------------+-------------------------------------+
+; Parameter Name  ; Value      ; Type                                ;
++-----------------+------------+-------------------------------------+
+; clock_frequency ; 50000000.0 ; Signed Float                        ;
+; window_duration ; 2.0E-05    ; Signed Float                        ;
+; delay_duration  ; 0.02       ; Signed Float                        ;
+; initial_level   ; '1'        ; Enumerated                          ;
++-----------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_1 ;
++-----------------+------------+-------------------------------------+
+; Parameter Name  ; Value      ; Type                                ;
++-----------------+------------+-------------------------------------+
+; clock_frequency ; 50000000.0 ; Signed Float                        ;
+; window_duration ; 2.0E-05    ; Signed Float                        ;
+; delay_duration  ; 0.02       ; Signed Float                        ;
+; initial_level   ; '1'        ; Enumerated                          ;
++-----------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_2 ;
++-----------------+------------+-------------------------------------+
+; Parameter Name  ; Value      ; Type                                ;
++-----------------+------------+-------------------------------------+
+; clock_frequency ; 50000000.0 ; Signed Float                        ;
+; window_duration ; 2.0E-05    ; Signed Float                        ;
+; delay_duration  ; 0.02       ; Signed Float                        ;
+; initial_level   ; '1'        ; Enumerated                          ;
++-----------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: debouncer:debouncer_3 ;
++-----------------+------------+-------------------------------------+
+; Parameter Name  ; Value      ; Type                                ;
++-----------------+------------+-------------------------------------+
+; clock_frequency ; 50000000.0 ; Signed Float                        ;
+; window_duration ; 2.0E-05    ; Signed Float                        ;
+; delay_duration  ; 0.02       ; Signed Float                        ;
+; initial_level   ; '1'        ; Enumerated                          ;
++-----------------+------------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: pseudo_random_generator:random_generator ;
++----------------+--------------------------------------------------+-------------------+
+; Parameter Name ; Value                                            ; Type              ;
++----------------+--------------------------------------------------+-------------------+
+; n_bits         ; 4                                                ; Signed Integer    ;
+; seed           ; 000000010010001101000101011001111000100110101011 ; Unsigned Binary   ;
++----------------+--------------------------------------------------+-------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Merge_lvl2:merge_lvl2_1"                                                                 ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; nextlevel ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Merge_lvl1:merge_lvl1_3"                                                                 ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; nextlevel ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Merge_lvl1:merge_lvl1_2"                                                                 ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; nextlevel ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Merge_lvl1:merge_lvl1_1"                                                                 ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; nextlevel ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Port Connectivity Checks: "pseudo_random_generator:random_generator" ;
++--------+-------+----------+------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                  ;
++--------+-------+----------+------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                             ;
++--------+-------+----------+------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "InsertedCount:inserted_count"                                                        ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; count ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debouncer:debouncer_3"                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; clean             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; one_to_zero_pulse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debouncer:debouncer_2"                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; clean             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; one_to_zero_pulse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debouncer:debouncer_1"                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; clean             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; one_to_zero_pulse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "debouncer:debouncer_0"                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+; clean             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; one_to_zero_pulse ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 66                          ;
+; cycloneiii_ff         ; 662                         ;
+;     ENA               ; 69                          ;
+;     ENA SCLR          ; 101                         ;
+;     SCLR              ; 14                          ;
+;     SLD               ; 16                          ;
+;     plain             ; 462                         ;
+; cycloneiii_lcell_comb ; 1403                        ;
+;     arith             ; 123                         ;
+;         2 data inputs ; 119                         ;
+;         3 data inputs ; 4                           ;
+;     normal            ; 1280                        ;
+;         1 data inputs ; 38                          ;
+;         2 data inputs ; 77                          ;
+;         3 data inputs ; 252                         ;
+;         4 data inputs ; 913                         ;
+;                       ;                             ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 3.80                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Fri Jun 01 15:21:58 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MergeSort -c MergeSort
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 3 design units, including 1 entities, in source file debouncer.vhd
+    Info (12022): Found design unit 1: debouncer-fancy File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 44
+    Info (12022): Found design unit 2: debouncer-basic File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 140
+    Info (12023): Found entity 1: debouncer File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 24
+Info (12021): Found 2 design units, including 1 entities, in source file mux4_1_8.vhd
+    Info (12022): Found design unit 1: Mux4_1_8-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Mux4_1_8.vhd Line: 48
+    Info (12023): Found entity 1: Mux4_1_8 File: D:/Universidade/LSDig/Projects/Merge Sort/Mux4_1_8.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bin7segdecoder.vhd
+    Info (12022): Found design unit 1: Bin7SegDecoder-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Bin7SegDecoder.vhd Line: 9
+    Info (12023): Found entity 1: Bin7SegDecoder File: D:/Universidade/LSDig/Projects/Merge Sort/Bin7SegDecoder.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mux2_1.vhd
+    Info (12022): Found design unit 1: Mux2_1-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Mux2_1.vhd Line: 11
+    Info (12023): Found entity 1: Mux2_1 File: D:/Universidade/LSDig/Projects/Merge Sort/Mux2_1.vhd Line: 4
+Info (12021): Found 3 design units, including 1 entities, in source file pseudo_random_generator.vhd
+    Info (12022): Found design unit 1: pseudo_random_generator-heavy File: D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd Line: 40
+    Info (12022): Found design unit 2: pseudo_random_generator-light File: D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd Line: 1304
+    Info (12023): Found entity 1: pseudo_random_generator File: D:/Universidade/LSDig/Projects/Merge Sort/pseudo_random_generator.vhd Line: 23
+Info (12021): Found 2 design units, including 1 entities, in source file controlunit.vhd
+    Info (12022): Found design unit 1: ControlUnit-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 21
+    Info (12023): Found entity 1: ControlUnit File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mergesortdemo.vhd
+    Info (12022): Found design unit 1: MergeSortDemo-Shell File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 19
+    Info (12023): Found entity 1: MergeSortDemo File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file insertedcount.vhd
+    Info (12022): Found design unit 1: InsertedCount-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/InsertedCount.vhd Line: 14
+    Info (12023): Found entity 1: InsertedCount File: D:/Universidade/LSDig/Projects/Merge Sort/InsertedCount.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file usercount.vhd
+    Info (12022): Found design unit 1: UserCount-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/UserCount.vhd Line: 15
+    Info (12023): Found entity 1: UserCount File: D:/Universidade/LSDig/Projects/Merge Sort/UserCount.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shiftregister.vhd
+    Info (12022): Found design unit 1: ShiftRegister-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/ShiftRegister.vhd Line: 19
+    Info (12023): Found entity 1: ShiftRegister File: D:/Universidade/LSDig/Projects/Merge Sort/ShiftRegister.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file merge_lvl1.vhd
+    Info (12022): Found design unit 1: Merge_lvl1-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl1.vhd Line: 19
+    Info (12023): Found entity 1: Merge_lvl1 File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file merge_lvl2.vhd
+    Info (12022): Found design unit 1: Merge_lvl2-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl2.vhd Line: 23
+    Info (12023): Found entity 1: Merge_lvl2 File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl2.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file merge_lvl3.vhd
+    Info (12022): Found design unit 1: Merge_lvl3-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl3.vhd Line: 31
+    Info (12023): Found entity 1: Merge_lvl3 File: D:/Universidade/LSDig/Projects/Merge Sort/Merge_lvl3.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file displaycontrol.vhd
+    Info (12022): Found design unit 1: DisplayControl-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/DisplayControl.vhd Line: 14
+    Info (12023): Found entity 1: DisplayControl File: D:/Universidade/LSDig/Projects/Merge Sort/DisplayControl.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file register1bit.vhd
+    Info (12022): Found design unit 1: Register1bit-Behavioral File: D:/Universidade/LSDig/Projects/Merge Sort/Register1bit.vhd Line: 12
+    Info (12023): Found entity 1: Register1bit File: D:/Universidade/LSDig/Projects/Merge Sort/Register1bit.vhd Line: 4
+Info (12127): Elaborating entity "MergeSortDemo" for the top level hierarchy
+Info (12129): Elaborating entity "debouncer" using architecture "A:fancy" for hierarchy "debouncer:debouncer_0" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 31
+Info (12129): Elaborating entity "Register1bit" using architecture "A:behavioral" for hierarchy "Register1bit:register_1" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 71
+Info (12129): Elaborating entity "ControlUnit" using architecture "A:behavioral" for hierarchy "ControlUnit:control_unit" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 111
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(38): inferring latch(es) for signal or variable "out_user", which holds its previous value in one or more paths through the process File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at ControlUnit.vhd(38): inferring latch(es) for signal or variable "out_inc_dec", which holds its previous value in one or more paths through the process File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 38
+Info (10041): Inferred latch for "out_inc_dec" at ControlUnit.vhd(38) File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 38
+Info (10041): Inferred latch for "out_user" at ControlUnit.vhd(38) File: D:/Universidade/LSDig/Projects/Merge Sort/ControlUnit.vhd Line: 38
+Info (12129): Elaborating entity "InsertedCount" using architecture "A:behavioral" for hierarchy "InsertedCount:inserted_count" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 125
+Info (12129): Elaborating entity "pseudo_random_generator" using architecture "A:heavy" for hierarchy "pseudo_random_generator:random_generator" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 131
+Info (12129): Elaborating entity "UserCount" using architecture "A:behavioral" for hierarchy "UserCount:user_count" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 138
+Info (12129): Elaborating entity "Mux2_1" using architecture "A:behavioral" for hierarchy "Mux2_1:mux_0" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 146
+Info (12129): Elaborating entity "ShiftRegister" using architecture "A:behavioral" for hierarchy "ShiftRegister:shift_register" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 158
+Info (12129): Elaborating entity "Merge_lvl1" using architecture "A:behavioral" for hierarchy "Merge_lvl1:merge_lvl1_0" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 172
+Info (12129): Elaborating entity "Merge_lvl2" using architecture "A:behavioral" for hierarchy "Merge_lvl2:merge_lvl2_0" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 212
+Info (12129): Elaborating entity "Merge_lvl3" using architecture "A:behavioral" for hierarchy "Merge_lvl3:merge_lvl3" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 241
+Info (12129): Elaborating entity "DisplayControl" using architecture "A:behavioral" for hierarchy "DisplayControl:display_control" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 266
+Info (12129): Elaborating entity "Mux4_1_8" using architecture "A:behavioral" for hierarchy "Mux4_1_8:mux_4_1_8" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 274
+Info (12129): Elaborating entity "Bin7SegDecoder" using architecture "A:behavioral" for hierarchy "Bin7SegDecoder:display0" File: D:/Universidade/LSDig/Projects/Merge Sort/MergeSortDemo.vhd Line: 290
+Info (284007): State machine "|MergeSortDemo|debouncer:debouncer_3|state" will be implemented as a safe state machine. File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 71
+Info (284007): State machine "|MergeSortDemo|debouncer:debouncer_2|state" will be implemented as a safe state machine. File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 71
+Info (284007): State machine "|MergeSortDemo|debouncer:debouncer_1|state" will be implemented as a safe state machine. File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 71
+Info (284007): State machine "|MergeSortDemo|debouncer:debouncer_0|state" will be implemented as a safe state machine. File: D:/Universidade/LSDig/Projects/Merge Sort/debouncer.vhd Line: 71
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1473 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 57 output pins
+    Info (21061): Implemented 1407 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4823 megabytes
+    Info: Processing ended: Fri Jun 01 15:22:16 2018
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:26
+
+

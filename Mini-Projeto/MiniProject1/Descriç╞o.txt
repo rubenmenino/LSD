@@ -1,0 +1,25 @@
+--O trabalho foi planeado e realizado em conjunto pelos dois alunos, pelo que a percentagem de contribuição pode ser considerada como 50% para cada um.
+
+--Na 1ª fase foi implementado o bloco de contagem, assim como o divisor de frequência que permite que a frequência seja 1HZ ao ser usado o CLOCK_50 da placa FPGA.
+--Na 2ª fase foi implementada a visualização da contagem nos displays de 7 segmentos, e foi usada como base a 1ª fase.
+--Na 3ª fase foi implementada a opção de escolher o valor inicial através de um reset assíncrono. O valor de partida é mostrado no display de 7 segmentos
+  e pode ser manipulado pelo uso das keys. É usado um MUX 2:1, em que o reset é o sel, de modo a selecionar se o valor apresentado no display é o valor da contagem
+  ou o valor de partida.
+
+--Considerações a tomar na 3ª fase:
+  --De modo a tornar o valor inicial antes do reset como 59:59 foi criado o sinal s_started que indica se a contagem já foi iniciada. Por este motivo, ao programar a
+    FPGA os valor apresentado no display sofre uma alteração rápida mas que não altera em nenhuma forma a contagem.
+  --O SW[0] associado ao reset deve estar a 0 quando se programa a FPGA. Caso contrário, o utilizador tem a opção de escolher o valor inicial mas a contagem começa
+    em 59:59, independemente do valor escolhido pelo utilizador.
+  --O valor apresentado no display após o reset é o valor selecionado anteriormente pelo utilizador. Caso seja a primeira vez, o valor é 59:59.
+
+--Controlos da contagem:
+  --SW[0]: reset
+  --SW[1]: start/pause
+  --KEY[0]: Decrementa o segundo dígito dos segundos
+  --KEY[1]: Decrementa o primeiro dígito dos segundos
+  --KEY[2]: Decrementa o segundo dígito dos minutos
+  --KEY[3]: Decrementa o primeiro dígito dos minutos
+
+--89147 Ricardo Carvalho
+--89185 Rúben Menino  		

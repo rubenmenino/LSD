@@ -1,0 +1,36 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+entity TimeCounter is
+	port( clk   : in std_logic;
+			res   : in std_logic;
+			start : in std_logic;
+			sec0  : in std_logic_vector(3 downto 0);
+			sec1  : in std_logic_vector(3 downto 0);
+			min0  : in std_logic_vector(3 downto 0);
+			min1  : in std_logic_vector(3 downto 0);
+end TimeCounter;
+
+
+
+architecture BehavProc of TimeCounter is
+
+signal s_count : unsigned (5 downto 0):= "111011";
+begin
+	process (clk)
+	begin
+		if (rising_edge (clk)) then
+			if	(res = '1') then
+				s_count <= "111011";
+			elsif (start= '1') then
+				if	(s_count= "000000") then
+					s_count<= "111011";
+				else	
+					s_count <= s_count - 1;
+				end if;	
+			end if;	
+		end if;	
+ 	end process;
+	count <= std_logic_vector(s_count);
+end BehavProc;	

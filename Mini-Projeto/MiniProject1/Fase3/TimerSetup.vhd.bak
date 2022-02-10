@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+entity TimerSetup is
+	port (secIncrement: in std_logic;
+			secDecrement: in std_logic;
+			minIncrement: in std_logic;
+			minDecrement: in std_logic;
+			secOut      : out std_logic_vector(5 downto 0);
+			minOut      : out std_logic_vector(5 downto 0));
+end TimerSetup;
+
+
+architecture BehavProc of TimerSetup is
+
+	signal s_secOut, minOut : unsigned (5 downto 0);
+
+begin
+	process(secIncrement, secDecrement, minIncrement, minDecrement)
+	begin
+		if (rising_edge(secIncrement)) then
+			if	(s_secOut < 59) then
+				s_secOut<= s_secOut + 1;
+			else
+				s_secOut<= s_secOut;
+			end if;	
+		end if;
+	end process;
+end BehavProc;	

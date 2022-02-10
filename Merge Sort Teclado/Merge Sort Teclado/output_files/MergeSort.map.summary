@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Jun 01 23:40:11 2018
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : MergeSort
+Top-level Entity Name : MergeSortDemo
+Family : Cyclone IV E
+Total logic elements : 1,778
+    Total combinational functions : 1,743
+    Dedicated logic registers : 790
+Total registers : 790
+Total pins : 68
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

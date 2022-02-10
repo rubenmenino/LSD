@@ -1,0 +1,30 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+entity ShiftRegister
+	port( clk: in std_logic;
+			res: in std_logic;
+			enable: in std_logic;
+			dataIn : in std_logic_vector(3 downto 0);
+			dataOut: out std_logic_vector(31 downto 0));
+end ShiftRegister;
+
+architecture Behavioral of ShiftRegister is
+	signal s_dataOut: std_logic_vector(31 downto 0);
+begin
+	process(clk)
+	begin
+		if(rising_edge(clk) then
+			if(res='1') then
+				dataOut<= (others=>'0');
+			else
+				if(enable='1') then
+					s_dataOut<= s_dataOut(27 downto 0) & dataIn;
+				end if;
+			end if;
+		end if;
+		
+		dataOut<= std_logic_vector(s_dataOut);
+	
+end Behavioral;			
+	
